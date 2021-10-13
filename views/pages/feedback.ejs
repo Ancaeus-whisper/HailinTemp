@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>反馈</title>
+    <link href="/myself.css" rel="stylesheet">
+</head>
+
+<body>
+    <form action="" name="femyform" method="GET">
+        <header class="site-header" id="site-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <a class="logo" href="/"><img id="logo" src="/logo.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <img src="/7.png" style="margin-left:45%;border-radius: 50%;width: 150px;height: 150px;">
+        <div class="wrapper">
+            <div class="page-news pb-media-5">
+                <div class="container">
+                    <div class="fixednav">
+                        <ul class="nav">
+
+                            <li class=" ">
+                                <a href="/information/user">
+                                    个人信息        
+                                </a>
+                            </li>
+                            <li class=" ">
+                                <a href="/myself">
+                                    预定记录
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="/feedback">
+                                   反馈
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <textarea name="feedback" class="fixednav3" placeholder="填写反馈内容"></textarea>
+
+                </div>
+
+            </div>
+            <input type="button" onclick="timelate()" value="提交反馈" style="margin: 20px 48%;">
+        </div>
+
+        </div>
+    </form>
+</body>
+<script>
+    function timelate() {
+        var feedback = document.getElementById("feedback").value;
+
+        $.ajax({
+            type: "post",
+            url: "/feedback/send",
+            data: "feedback",
+            dataType: "json"
+        });
+    }
+</script>
+
+</html>

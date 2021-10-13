@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>预定界面</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="fonts/iconfont.css" rel="stylesheet">
+    <link href="js/vendor/wow/css/libs/animate.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/revers_h.css">
+
+    <script src="js/vendor/wow/dist/wow.min.js"></script>
+    <script>
+        new WOW().init();
+        $(function() {})
+
+        function openDialog() {
+            document.getElementById('light').style.display = 'block';
+            document.getElementById('fade').style.display = 'block';
+        }
+
+        function apt1() {
+            document.getElementById('apt').style.display = 'block';
+            document.getElementById('out').style.display = 'block';
+        }
+
+        function closeDialog() {
+            document.getElementById('light').style.display = 'none';
+            document.getElementById('fade').style.display = 'none';
+        }
+
+        function out1() {
+            document.getElementById('apt').style.display = 'none';
+            document.getElementById('out').style.display = 'none';
+        }
+        window.onload = function() {
+            $.ajax({
+                type: "post",
+                url: "",
+                dataType: "json",
+                async: false,
+                success: function(data) {
+                    var htdata = data.data;
+
+
+
+                },
+                error: function() {
+                    alert("传输失败");
+                }
+            });
+        }
+    </script>
+    <style>
+        .white {
+            display: block;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 700px;
+            height: 484px;
+            margin-left: 80px;
+            padding: 20px;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+            border-radius: 20px;
+        }
+        
+        .black_overlay {
+            display: block;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-image: url(Files/Upload/Adlmage/20210826/b2.jpg);
+            z-index: 800;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+    </style>
+</head>
+
+<body>
+    <form id="revers_h" action="#" method="GET" enctype="multipart/form-data">
+        <div id=apt class=white>
+            <div class="div_title ">
+
+                <OBJECT classid=" CLSID:8856F961-340A-11D0-A96B-00C04FD705A2 " height="0 " id="wb " name="wb " width="3 "></OBJECT>
+                <!--<div style="float: right;width: 98%;margin-bottom: 10px;margin-top: 10px ">
+                <input id="print_btn " type="button " class="func-button " style="float: right; " value="打印 " onclick="doPrint() " />
+            </div>-->
+                <br>
+                <!--startprint-->
+                <br>
+                <br>
+                <div style="width:98%;text-align: center;font-size:20px;margin-top: 0px; ">
+                    <strong>预约填写信息</strong>
+                </div>
+                <br>
+                <!--<div style="background: url(images/bg.jpg);width: 600px;height: 500px;"></div>-->
+                <div class="box1">
+                    <div class="box">
+                        &nbsp&nbsp&nbsp<label>姓名:</label><input type="text" name="user_name">
+                    </div>
+                    <div class="box">
+                        <label>手机号:</label><input type="text" name="user_phone">
+                    </div>
+                    <div class="box">
+                        <label>实验室:</label>
+                        <p name="revers"></p>
+                    </div>
+                    <div class="boxs">
+                        <input id="meeting" type="datetime-local" name="begin" />
+                        <input id="meeting" type="datetime-local" name="over" />
+                    </div>
+                    <div class="boxs1">
+                        <a>开始时间</a>
+                        <a>结束时间</a>
+                    </div>
+                    <div class="boxs2">
+                        <a href="/revers/book/book_confirm">预约</a>
+                        <a href="/revers">取消</a>
+                    </div>
+                </div>
+            </div>
+
+    </form>
+    <!--endprint-->
+    </div>
+    <div id=out class=black_overlay></div>
+</body>

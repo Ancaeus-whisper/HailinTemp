@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>个人信息</title>
+    <link href="/myself.css" rel="stylesheet">
+    <style>
+        .black_content {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 1000px;
+            background-color: black;
+            z-index: 800;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+        
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 15%;
+            left: 30%;
+            width: 700px;
+            height: 700px;
+            padding: 20px;
+            background-color: rgb(243, 237, 237);
+            z-index: 1002;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+
+<header class="site-header" id="site-header">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <a class="logo" href="/"><img id="logo" src="/logo.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+</header>
+<img src="/7.png" style="margin-left:45%;border-radius: 50%;width: 150px;height: 150px;">
+<div class="wrapper">
+    <div class="page-news pb-media-5">
+        <div class="container">
+            <div class="fixednav">
+                <ul class="nav">
+
+                    <li class="">
+
+                        <a href="/information/admin">
+                            个人信息
+                        </a>
+                    </li>
+                    <li class="active">
+
+                        <a href="/myself/adminmyself">
+                            预定记录
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/feedbox">
+                           反馈邮箱
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="fixednav2">
+
+                <div id="list">
+                    <!-- 
+                    <li style="   border: 2px solid #bbb;
+                    border-radius: 5px;">
+                        <img src="/1.png" style="width: 100px;height: 100px;">
+                        <a id="inform1"></a>
+                        <a href="#" style="padding: 30px 16px 30px 16px;border-left: 2px solid #bbb;margin-left: -8px;">再次预定</a>
+                        <a href="/report">实验报告</a>
+                    </li>
+                    <li style="   border: 2px solid #bbb;border-radius: 5px;margin-top: 10px;">
+                        <img src="/1.png" style="width: 100px;height: 100px;margin-top: 20px;">
+                        <a id="inform1"></a>
+                        <a href="#" style="padding: 30px 16px 30px 16px;border-left: 2px solid #bbb;margin-left: -8px;">再次预定</a>
+                        <a href="/report">实验报告</a>
+                    </li>
+                    <li style="   border: 2px solid #bbb;
+                    border-radius: 5px;margin-top: 10px;">
+                        <img src="/1.png" style="width: 100px;height: 100px;">
+                        <a id="inform1"></a>
+                        <a href="#" style="padding: 30px 16px 30px 16px;border-left: 2px solid #bbb;margin-left: -8px;">再次预定</a>
+                        <a href="/report">实验报告</a>
+                    </li>
+                    <li style="   border: 2px solid #bbb;
+                    border-radius: 5px;margin-top: 10px;">
+                        <img src="/1.png" style="width: 100px;height: 100px;">
+                        <a id="inform1"></a>
+                        <a href="#" style="padding: 30px 16px 30px 16px;border-left: 2px solid #bbb;margin-left: -8px;">再次预定</a>
+                        <a href="/report">实验报告</a>
+                    </li>
+                    -->
+                </div>
+            </div>
+
+        </div>
+        <div class="page_main ">
+            <div class="clearfloat "></div>
+        </div>
+    </div>
+</div>
+</div>
+<div id="white" class="white_content">
+    <div style="margin-left: 650px;margin-top: -20px;">
+        <a href="#" onclick="closeDialog()">X</a>
+    </div>
+    <div class="bux">
+        <h3 align="center">实验报告</h3>
+        <p id="user_whatdo"></p>
+        <p id="user_name"></p>
+        <p id="user_house"></p>
+        <p id="purpose"></p>
+        <p id="used"></p>
+        <p id="priciple"></p>
+        <p id="step"></p>
+        <p id="question"></p>
+        <p id="comment"></p>
+    </div>
+
+</div>
+<div id="black" class="black_content"></div>
+</body>
+<script>
+    window.onload = function() {
+        var list = "";
+        var s = 4;
+        while (s--) {
+            if (s == 3) {
+                list += "  <li style='border: 2px solid #bbb;border-radius: 5px;'>" + "  <img src='/1.png' style='width: 100px;height: 100px;'>" + "<a id='inform" + s + "'></a>" + "&nbsp&nbsp&nbsp&nbsp&nbsp<a href='#'style='padding: 30px 16px 30px 16px;border-left: 2px solid #bbb;margin-left: -8px;'onclick='openDialog()'>查看实验报告</a>" +
+                    "</li>";
+            } else {
+                list += "  <li style='border: 2px solid #bbb;border-radius: 5px;margin-top: 10px;'>" + "  <img src='/1.png' style='width: 100px;height: 100px;'>" + "<a id='inform" + s + "'></a>" + "&nbsp&nbsp&nbsp&nbsp&nbsp<a href='#'style='padding: 30px 16px 30px 16px;border-left: 2px solid #bbb;margin-left: -8px;'onclick='openDialog()'>查看实验报告</a>" +
+                    "</li>";
+            }
+        }
+        document.getElementById("list").innerHTML = list;
+        document.getElementById("inform3").innerHTML = "实验室：17508" + "，" + "指导人：何晰嵩" + "，" + "时间：14：00-17：00";
+        document.getElementById("inform0").innerHTML = "实验室：17509" + "，" + "指导人：肖奕呈" + "，" + "时间：14：00-17：00";
+        var a = "何晰嵩ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
+        document.getElementById("user_whatdo").innerHTML = "实验名称：" + a.substring(0, 78) + "<br/>" + a.substring(79, a.length); //超出记得加换行
+        document.getElementById("user_name").innerHTML = " 实验者：" + "何晰嵩";
+        document.getElementById("user_house").innerHTML = " 实验室：" + "何晰嵩";
+        document.getElementById("purpose").innerHTML = " 实验目的：" + "何晰嵩";
+        document.getElementById("used").innerHTML = "实验所用器材：" + "何晰嵩";
+        document.getElementById("priciple").innerHTML = " 实验原理：" + "何晰嵩";
+        document.getElementById("step").innerHTML = "实验步骤：" + "何晰嵩";
+        document.getElementById("question").innerHTML = " 实验发生的问题：" + "何晰嵩";
+        document.getElementById("comment").innerHTML = "对此次实验的评价：" + "何晰嵩";
+    }
+
+    function openDialog() {
+        document.getElementById("white").style.display = 'block';
+        document.getElementById("black").style.display = 'block';
+    }
+
+    function closeDialog() {
+        document.getElementById("white").style.display = 'none';
+        document.getElementById("black").style.display = 'none';
+    }
+</script>
+
+</html>

@@ -1,0 +1,82 @@
+<header class="site-header" id="site-header">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <a class="logo" href="/"><img id="logo" src="/logo.png" alt="松山湖"></a>
+            </div>
+            <div class="col">
+                <ul class="mainav">
+                    <li class="">
+                        <a class="" href="/">首页</a>
+                    </li>
+                    <li class="hasnav">
+                        <a class="" href="/about">实验室概况</a>
+
+                    </li>
+                    <li class="hasnav">
+                        <a class="" href="/revers">实验室</a>
+                        <ul class="subnav">
+                            <li class="">
+                                <a href="/revers">实验室预定</a>
+                            </li>
+
+                            <li class="">
+                                <a href="/news/course">视频教程</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="hasnav">
+                        <a class="" href="/news">新闻中心</a>
+                        <ul class="subnav">
+                            <li class="">
+                                <a href="/news">新闻资讯</a>
+                            </li>
+
+                            <li class="">
+                                <a href="/news/notice">通知公告</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="hasnav">
+                        <a class="active" href="/contact">联系我们</a>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-auto">
+                <!-- <%if(!isLogin){%>
+                <div class="ql emailoa">
+                    <a href="login/1">登录</a>
+                </div>
+                <div class="ql emailoa">
+                    <a href="/register">注册</a>
+                </div>
+                <%}else{%>
+                    <div class="ql emailoa">
+                       欢迎回来,<%=username%>!
+                       <a href="/cancel">注销</a>
+                    </div>
+                <%}%> -->
+                <li class="forum">
+                    <div class="logined" id="logined">
+                        <a href="/myself"><img src="images/7.png"> </a>
+                    </div>
+                    <ul class="forum-1">
+                        <li><a href="/appointment_user">个人信息</a></li>
+                        <li><a href="/cancel">退出登录</a></li>
+                    </ul>
+                </li>
+
+            </div>
+            <div class="col-auto mobilemenu">
+                <div class="menu-toggle">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+        </div>
+    </div>

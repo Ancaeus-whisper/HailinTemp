@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>上传</title>
+    <link href="/upload.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header" id="site-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <a class="logo" href="/"><img id="logo" src="/logo.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="fixednav2">
+        <div class="bux">
+
+            <form id="form" method="POST" enctype="multipart/form-data" action="upload" onsubmit="return check();">
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;视频封面：
+                    <img id="preview" style="height: 100px;width: 150px;">
+
+                    <input type="file" accept="/*" name="file" id="file" />
+                </div>
+                <p style="margin-left: 158px;margin-top: 20px;">标题：<input type="text" name="video_name"></p>
+                <p style="margin-left: 158px;">链接：<input type="text" name="video_url"></p>
+                <input type="submit" style="width: 75px;height:40px;margin-left: 40%;margin-top: 20px;" />
+
+
+            </form>
+
+            <script>
+                window.onload = function() {
+                    $.ajax({
+                        type: "post",
+                        url: "",
+                        dataType: "json",
+                        async: false,
+                        success: function(data) {
+                            var htdata = data.data;
+                            var isexist = htdata.isexist;
+                            if (isexist == "upload") {
+                                alert("视频已上传");
+                            }
+
+                        },
+                        error: function() {
+                            alert("传输失败");
+                        }
+                    });
+                }
+
+
+                function timelate() {
+                    var video_name = document.getElementsByName("video_name").values;
+                    var video_url = document.getElementsByName("video_url").values;
+                    /*少了个图片的values！！！！！！！*/
+                    $.ajax({
+                        type: "post",
+                        url: "",
+                        data: {
+                            "videoName": video_name,
+                            "videourl": video_url
+                        },
+                        dataType: "json",
+                        async: false,
+                        success: function(data) {
+                            alert("传输成功");
+                        },
+                        error: function() {
+                            alert("传输失败");
+                        }
+                    });
+                }
+
+                var fileDom = document.getElementById("file");
+                var previewDom = document.getElementById("preview");
+                fileDom.addEventListener("change", e => {
+                    var file = fileDom.files[0];
+                    // check if input contains a valid image file
+                    if (!file || file.type.indexOf("image/") < 0) {
+                        fileDom.value = "";
+                        previewDom.src = "";
+                        return;
+                    }
+
+                    // use FileReader to load image and show preview of the image
+                    var fileReader = new FileReader();
+                    fileReader.onload = e => {
+                        previewDom.src = e.target.result;
+                    };
+                    fileReader.readAsDataURL(file);
+                });
+
+                var formDom = document.getElementById("form");
+
+                function check() {
+                    var file = fileDom.files[0];
+                    // check if input contains a valid image file
+                    if (!file || file.type.indexOf("image/") < 0) {
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>

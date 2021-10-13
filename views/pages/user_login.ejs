@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>登录界面</title>
+    <link rel="stylesheet" type="text/css" href="/login.css">
+
+</head>
+
+<body>
+    <div class="col-auto">
+        <a class="logo" href="/"><img id="logo" src="/logo.png" alt=""></a>
+    </div>
+    <form id="login" action="/login/login_confirm_user" name="myform" method="GET" enctype="multipart/form-data" onsubmit=" return timelate();">
+        <div style="background: url(/Upload/Adlmage/20210826/b2.jpg);width: 100%;height: 475px;margin-top: 20%;">
+
+            <div class="login">
+                <!--<div style="background: url(images/bg.jpg);width: 600px;height: 500px;"></div>-->
+                <h2>用户登录</h2>
+                <div class="buttons">
+                    <a href="/login/user_login">用户登录</a>
+                    <a href="/login/admin_login">管理员登录</a>
+                </div>
+                <div class="box">
+                    <input type="text" name="user_phone" id="user_phone" required="required"><label>手机号</label>
+                </div>
+                <div class="box">
+                    <input type="password" name="user_password" id="user_password" required="required">
+                    <label>密码</label>
+                </div>
+                <div class="in">
+                    <input type="submit" value="登录" style="margin: 20px 48%;">
+                </div>
+                <div class="regist">
+                    <p>还没账号？</p>
+                    <a href="/register">注册</a>
+                </div>
+                <div class="password">
+                    <a href="/forget">忘记密码?</a>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </form>
+</body>
+<script>
+    window.onload = function() {
+        $.ajax({
+            type: "post",
+            url: "",
+            dataType: "json",
+            async: false,
+            success: function(data) {
+                var htdata = data.data;
+                var isexist = htdata.isexist;
+                if (isexist == "false") {
+                    alert("登录失败");
+                } else if (isexist == "forget") {
+                    alert("找回密码成功");
+                } else if (isexist = "regist") {
+                    alert("注册成功");
+                }
+
+            },
+            error: function() {
+                alert("传输失败");
+            }
+        });
+    }
+
+
+    function doSomething() {
+        window.location.href = "/register";
+    }
+
+    function timelate() {
+        var user_phone = document.getElementById("user_phone").value;
+        var user_password = document.getElementById("user_password").value;
+        alert(user_password);
+        $.ajax({
+            type: "post",
+            url: "/login/login_confirm_user",
+            data: "user_phone=" + user_phone + "&user_password=" + user_password,
+            dataType: "json"
+        });
+
+
+    }
+</script>
+
+</html>

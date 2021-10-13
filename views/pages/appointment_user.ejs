@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>个人信息</title>
+    <link href="/myself.css" rel="stylesheet">
+</head>
+
+
+<header class="site-header" id="site-header">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <a class="logo" href="/"><img id="logo" src="/logo.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+</header>
+<img src="/7.png" style="margin-left:45%;border-radius: 50%;width: 150px;height: 150px;">
+<div class="wrapper">
+    <div class="page-news pb-media-5">
+        <div class="container">
+            <div class="fixednav">
+                <ul class="nav">
+
+                    <li class="">
+                        <a href="/information/user">
+                            个人信息        
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/myself">
+                            预定记录
+                        </a>
+                    </li>
+                    <li class=" ">
+                        <a href="/feedback">
+                           反馈
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="fixednav2">
+
+                <div id="list">
+                    <%var count=0;%>
+                        <%while(count<4){%>
+                            <%if(count>Object.keys(Record).length-1) break;else{%>
+                                <li style="   border: 2px solid #bbb;
+                    border-radius: 5px;">
+                                    <img src="<%=Record[count].Pic%>" style="width: 100px;height: 100px;">
+                                    <a id="inform1">实验室:<%=Record[count].Name%>指导人:<%=Record[count].Mentor%>时间:<%=Record[count].StartTime.toString().substring(16,25);%>-<%=Record[count].EndTime.toString().substring(16,25);%></a>
+                                    <a href="#" style="padding: 30px 16px 30px 16px;border-left: 2px solid #bbb;margin-left: -8px;">再次预定</a>
+                                    <a href="/report">实验报告</a>
+                                </li>
+                                <%count++;}}%>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <div class="page_main ">
+            <div class="clearfloat "></div>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+<script>
+    window.onload = function() {
+
+        $.ajax({
+            type: "post",
+            url: "",
+            dataType: "json",
+            async: false,
+            success: function(data) {
+                var htdata = data.data;
+                var isexist = htdata.isexist;
+                if (isexist == "report") {
+                    alert("实验报告提交成功");
+                }
+            },
+            error: function() {
+                alert("传输失败");
+            }
+        });
+    }
+</script>
+
+</html>

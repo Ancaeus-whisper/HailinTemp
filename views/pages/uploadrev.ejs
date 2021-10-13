@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>上传实验室</title>
+    <link href="/upload.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header" id="site-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <a class="logo" href="/"><img id="logo" src="/logo.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="fixednav4">
+        <div class="bux1">
+
+            <form id="form" method="GET" enctype="multipart/form-data" action="revers_send" onsubmit="return check();">
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;实验室封面：
+                    <img id="preview" style="height: 100px;width: 150px;">
+
+                    <input type="file" accept="/*" name="file" id="file" />
+                </div>
+                <p style="margin-left: 158px;margin-top: 20px;">实验室：<input type="text" name="Name" id="revers_name"></p>
+                <p style="margin-left: 125px;">实验指导人：<input type="text" name="Mentor" id="revers_director"></p>
+                <p style="margin-left: 110px;">适用于的实验：<input type="text" name="Experiment" id="revers_fair"></p>
+                <p style="margin-left: 141px;">实验仪器：<input type="text" name="Equipment" id="revers_instru"></p>
+                <p style="margin-left: 172px;">备注：<input type="text" name="Remark" id="revers_more"></p>
+                <p style="margin-left: 98px;">收费信息(普通)：<input type="text" name="NormalPrice" id="revers_charge"></p>
+                <p style="margin-left: 98px;">收费信息(会员)：<input type="text" name="VIPPrice" id="revers_charge1"></p>
+                <input type="submit" style="width: 75px;height:40px;margin-left: 40%;margin-top: 20px;" />
+
+
+            </form>
+
+            <script>
+                var fileDom = document.getElementById("file");
+                var previewDom = document.getElementById("preview");
+                fileDom.addEventListener("change", e => {
+                    var file = fileDom.files[0];
+                    // check if input contains a valid image file
+                    if (!file || file.type.indexOf("/") < 0) {
+                        fileDom.value = "";
+                        previewDom.src = "";
+                        return;
+                    }
+
+                    // use FileReader to load image and show preview of the image
+                    var fileReader = new FileReader();
+                    fileReader.onload = e => {
+                        previewDom.src = e.target.result;
+                    };
+                    fileReader.readAsDataURL(file);
+                });
+
+                var formDom = document.getElementById("form");
+
+                function check() {
+                    var preview = document.getElementById("preview").value;
+                    var revers_name = document.getElementById("revers_name").value;
+                    var revers_director = document.getElementById("revers_director").value;
+                    var revers_fair = document.getElementById("revers_fair").value;
+
+                    $.ajax({
+                        type: "post",
+                        url: "",
+                        data: {
+                            "videoName": video_name,
+                            "videourl": video_url,
+                            "preview": preview
+                        },
+                        dataType: "json",
+                        async: false,
+                        success: function(data) {
+                            alert("传输成功");
+                        },
+                        error: function() {
+                            alert("传输失败");
+                        }
+                    });
+                    var file = fileDom.files[0];
+                    // check if input contains a valid image file
+                    if (!file || file.type.indexOf("/") < 0) {
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>

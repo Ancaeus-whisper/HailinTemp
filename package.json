@@ -1,0 +1,32 @@
+{
+  "name": "hailintechnology",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ancaeus-whisper/HailinTechnology.git"
+  },
+  "author": "Ancaeus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ancaeus-whisper/HailinTechnology/issues"
+  },
+  "homepage": "https://github.com/Ancaeus-whisper/HailinTechnology#readme",
+  "dependencies": {
+    "async": "^3.2.1",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "js-base64": "^3.7.2",
+    "md5": "^2.3.0",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "node-acl": "^0.0.2",
+    "request": "^2.88.2"
+  }
+}

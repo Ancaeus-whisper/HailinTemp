@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>个人信息</title>
+    <link href="/report.css" rel="stylesheet">
+</head>
+
+<body>
+    <form id="login" action="#" name="myform" method="GET" enctype="multipart/form-data" onsubmit=" return timelate();">
+    <header class="site-header" id="site-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <a class="logo" href="/"><img id="logo" src="/logo.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="fixednav2">
+
+        <div class="bux">
+            <h3>实验报告</h3>
+            <p style="margin-left: 158px;">实验名称：<input type="text" name="user_whatdo"></p>
+            <p style="margin-left: 158px;">&nbsp;&nbsp;&nbsp;实验者：<input type="text" name="user_name"></p>
+            <p style="margin-left: 158px;">&nbsp;&nbsp;&nbsp;实验室：<input type="text" name="user_house"></p>
+            <p style="margin-left: 75px;">实验目的：</p>
+            <textarea style="margin-left: 75px;" name="purpose"></textarea>
+            <p style="margin-left: 75px;">实验所用器材：</p>
+            <textarea style="margin-left: 75px;" name="used"></textarea>
+            <p style="margin-left: 75px;">实验原理：</p>
+            <textarea style="margin-left: 75px;" name="priciple"></textarea>
+            <p style="margin-left: 75px;">实验步骤：</p>
+            <textarea style="margin-left: 75px;" name="step"></textarea>
+            <p style="margin-left: 75px;">实验发生的问题：</p>
+            <textarea style="margin-left: 75px;" name="question"></textarea>
+            <p style="margin-left: 75px;">对此次实验的评价：</p>
+            <textarea style="margin-left: 75px; " name="comment"></textarea>
+        </div>
+    </div>
+    <a href="javascript: document.myform.submit() " class="subm">提交报告</a>
+    <a href="/myself" class="subm1">取消提交</a>
+    </form>
+</body>
+<script>
+    function doSomething() {
+        window.location.href = "/register";
+    }
+
+    function timelate() {
+        var user_whatdo = document.getElementsByName("user_whatdo").values;
+        var user_name = document.getElementsByName("user_name").values;
+        var user_house = document.getElementsByName("user_house").values;
+        var purpose = document.getElementsByName("purpose").values;
+        var used = document.getElementsByName("used").values;
+        var priciple = document.getElementsByName("priciple").values;
+        var step = document.getElementsByName("step").values;
+        var question = document.getElementsByName("question").values;
+        var comment = document.getElementsByName("comment").values;
+
+        $.ajax({
+            type: "post",
+            url: "",
+            data: {
+                "reportdo": user_whatdo,
+                "reportname": user_name,
+                "reporthouse": user_house,
+                "reportpurpose": purpose,
+                "reportused": used,
+                "reportpriciple": priciple,
+                "reportstep": step,
+                "reportquestion": question,
+                "reportcomment": comment
+
+            },
+            dataType: "json",
+            async: false,
+            success: function(data) {
+                alert("传输成功");
+            },
+            error: function() {
+                alert("传输失败");
+            }
+        });
+    }
+</script>
+</html>

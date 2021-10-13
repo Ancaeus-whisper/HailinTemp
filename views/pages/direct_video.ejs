@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>视频教程</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="/iconfont.css" rel="stylesheet">
+    <link href="/video.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/revers.css">
+
+    <script src="vendor/wow/dist/wow.min.js"></script>
+
+    <style>
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 800;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+        
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 906px;
+            height: 618px;
+            padding: 20px;
+            background-color: rgb(243, 237, 237);
+            z-index: 1002;
+            overflow: auto;
+        }
+        
+        .div_title a {
+            position: absolute;
+            margin-top: -20px;
+            text-decoration: none;
+            font-size: large;
+            color: black;
+            margin-left: 853px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("particle/header.ejs");%>
+        </header>
+        <div class="banner banner-about" style="background-image:url(/8.jpg)">
+
+        </div>
+        <%if(isAdmin){%>
+        <input type="button" value="添加视频" style="display: block;height: 50px;width: 100px;margin-left: 1700px;">
+        <%}%>
+        <div class="contain">
+            <div id="all-list">
+            <div class="flow-loader" style="position:relative;">
+                <ul type="video" class="video-list clearfix">
+                    <%var count=0;%>
+                    <%while(count<12){if(count>Object.keys(Video).length-1) break;else{%>
+                        
+                    <li class='video-item matrix'>
+                        <a href='<%=Video[count].URL%>' target='_blank' class='img-anchor'>
+                            <div class='img'>
+                                 <div class='lazy-img'>
+                                     <img alt='' src='<%=Video[count].Pic%>'>
+                                 </div>
+                                 <div class='watch-later-trigger watch-later'>
+        
+                                 </div>
+                                 <span class='mask-video'>
+        
+                                 </span>
+                            </div>
+                        </a>  
+                            <div class='info'>
+                                <div class='headline clearfix'> 
+                                    <a title='' href='<%=Video[count].URL%>' target='_blank' class='title'><%=Video[count].Title%></a>
+                                </div>
+                                <div class=des hide>
+                                </div>
+                            </div>
+                    </li>
+                <%count++;}}%>
+                </ul>
+            </div> 
+            </div>
+
+        </div>
+</body>
+<script>
+    function openDialog() {
+        document.getElementById('light').style.display = 'block';
+        document.getElementById('fade').style.display = 'block';
+    }
+    function closeDialog() {
+        document.getElementById('light').style.display = 'none';
+        document.getElementById('fade').style.display = 'none';
+    }
+    
+    
+</script>
+
+</html>

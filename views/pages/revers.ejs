@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>实验室选择</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="/iconfont.css" rel="stylesheet">
+    <link href="vendor/wow/css/libs/animate.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/revers.css">
+
+    <script src="vendor/wow/dist/wow.min.js"></script>
+    <script>
+        new WOW().init();
+        
+        $(function() {})
+        function openDialog() {
+    
+            document.getElementById('light').style.display = 'block';
+            document.getElementById('fade').style.display = 'block';
+	        	
+        }
+        function apt() {
+            window.location.href = "/revers/book";
+        }
+        function closeDialog() {
+            document.getElementById('light').style.display = 'none';
+            document.getElementById('fade').style.display = 'none';
+        }
+    </script>
+    <style>
+        .white {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 906px;
+            height: 618px;
+            padding: 20px;
+            background-color: rgb(243, 237, 237);
+            z-index: 1002;
+            overflow: auto;
+        }
+        
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 800;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+        
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 906px;
+            height: 618px;
+            padding: 20px;
+            background-color: rgb(243, 237, 237);
+            z-index: 1002;
+            overflow: auto;
+        }
+        
+        .div_title a {
+            position: absolute;
+            margin-top: -20px;
+            text-decoration: none;
+            font-size: large;
+            color: black;
+            margin-left: 853px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("particle/header.ejs"); %>
+        </header>
+
+        <div class="banner banner-about" style="background-image:url(/8.jpg)">
+
+        </div>
+        
+            <input type="button" value="添加实验室" style="display: block;height: 50px;width: 100px;margin-left: 1700px;">
+        
+        <section class="section wpcom-modules modules-service container" id="modules-6" style="margin-top: 0px;margin-bottom: 20px;">
+            <!-- 后端从这里插入-->
+            <%var count=0;%>
+            <%while(count<20){if(count==0){%>            
+            <ul class='service-list'>
+                <%}else if((count+1)%4==0){%>
+                </ul><ul class='service-list'>
+                    <%}%>
+                    <%if(count>Object.keys(Experiment).length-1){%>
+                    </ul>
+                    <%break;}else{%>
+            <div class="row" id="list">
+                <li class='service-item col-xs-6 col-sm-3 col-md-3 text-center'>
+                    <a href='#' onclick='openDialog()'>
+                        <img class='j-lazy' src=<%=Experiment[count].Pic%> alt='实验室EPC总包工程'>
+                     </a>
+                     <h3 class='service-item-title'>
+                         <a href='#' onclick='openDialog()' ><%=Experiment[count].Name%> </a>
+                    </h3>
+                    <a herf='/revers/book?Name='+<%=Experiment[count].Name%> >
+                        预约
+                    </a>
+                </li>
+            </div>
+            <%count++;}%>
+            <%if(count==19){%>
+                </ul>
+            <%}%>   
+            <%}%>
+        </section>
+        <div id="light" class="white_content">
+            <div class="div_title">
+                <a href="#" onclick="closeDialog()">X</a> </div>
+            <OBJECT classid=" CLSID:8856F961-340A-11D0-A96B-00C04FD705A2 " height="0 " id="wb " name="wb " width="3 "></OBJECT>
+            <!--<div style="float: right;width: 98%;margin-bottom: 10px;margin-top: 10px ">
+                <input id="print_btn " type="button " class="func-button " style="float: right; " value="打印 " onclick="doPrint() " />
+            </div>-->
+            <br>
+            <!--startprint-->
+            <br>
+            <br>
+            <div style="width:98%;text-align: center;font-size:20px;margin-top: -77px; ">
+                <strong>实 验 室 情 况 一 览 表</strong>
+            </div>
+            <br>
+            <div id="revers_table">
+            <table width="98% " border="1px " cellpadding="0 " cellspacing="0 " style="font-size: 13px;text-align: center;margin-left: 10px;border-collapse: collapse; " id="revers_table">
+                <tr style="height: 30px; ">
+                    <td style="width: 270px;background-color: #DBDBDE ">实验室</td>
+                    <td style="width: 50%; ">
+                        <span class="name" id="revers_house">17508</span>
+                    </td>
+
+                    <td colspan="2 " rowspan="6 " align="center ">
+                        <div style="width:97%;height:99%; ">
+                            <img height="200px " width="300px " src="" id="reversimg">
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 30px ">
+                    <td style="width: 130px;background-color: #DBDBDE ">所属单位</td>
+                    <td class="w140 ">
+                        <span class="name" id="belong">海凌科技园</span>
+                    </td>
+
+                </tr>
+                <tr style="height: 30px ">
+                    <td style="width: 130px;background-color: #DBDBDE ">消毒情况</td>
+                    <td class="w140 ">
+                        <span class="name" id="isdisinfect">已消毒</span>
+                    </td>
+
+                </tr>
+                <tr style="height: 30px ">
+                    <td style="width: 130px;background-color: #DBDBDE ">预约状况</td>
+                    <td class="w140 ">
+                        <span class="name " id="isapt">可预约</span>
+                    </td>
+
+                </tr>
+                <tr style="height: 30px ">
+                    <td style="width: 130px;background-color: #DBDBDE ">实验指导人</td>
+                    <td class="w140 ">
+                        <span class="w140 name " id="instructor">何晰嵩</span>
+                    </td>
+
+                </tr>
+                <tr style="height: 30px ">
+                    <td style="width: 130px;background-color: #DBDBDE ">实验器材工作状态</td>
+                    <td class="w140 ">
+                        <span class="w140 name " id="condition">正常</span>
+                    </td>
+
+                </tr>
+
+                <tr style="height: 30px ">
+                    <td style="width: 130px;background-color: #DBDBDE ">几种适用于的实验</td>
+                    <td colspan="5 " align="center ">
+                        <span id="suit">空气中氢气密度，氩气密度等等</span>
+                    </td>
+
+                </tr>
+                <tr style="height: 30px ">
+                    <td style="width: 130px;background-color: #DBDBDE ">实验仪器</td>
+                    <td colspan="5 " align="center" ">
+                        <span id="instrument ">启普发生器，烧杯，集气瓶</span>
+                    </td>
+                </tr>
+                <tr style="height: 30px ">
+                    <td style="width: 130px;background-color: #DBDBDE ">备注</td>
+                    <td colspan="5 " align="left ">
+                        <span id="remark "></span>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <div style="width:98%;text-align: center;font-size:15px;margin-top: 5px;margin-bottom: 5px; ">
+                <strong>实验室收费信息</strong>
+            </div>
+            <table id="detail " width="98% " border="1 " class="table_detail " style="font-size: 13px;text-align: center;margin-left: 10px;border-collapse: collapse; ">
+                <thead>
+                    <tr align="center ">
+                        <th>普通用户价格</th>
+                        <th>会员价格</th>
+                    </tr>
+                </thead>
+                <tbody align="center ">
+                    <tr>
+                        <td>100-时间计费</td>
+                        <td>80-时间计费</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+        </div>
+            <!--endprint-->
+        </div>
+        <div id=fade class=black_overlay></div>
+      
+        <%-include('particle/footer.ejs'); %>
+</body>
+<div id=fade class=black_overlay></div>
+</html>
